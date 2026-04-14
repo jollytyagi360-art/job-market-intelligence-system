@@ -8,13 +8,13 @@
 
 This project analyzes job listings data to understand hiring trends, identify in-demand skills, and build a machine learning model to classify high-demand jobs.
 
-The focus is on extracting insights from unstructured job descriptions and converting them into meaningful features.
+The main focus is on extracting insights from unstructured job descriptions and converting them into structured features for analysis.
 
 ---
 
 ## 🎯 Problem Statement
 
-Many candidates struggle to identify which skills are actually required in the job market. This often leads to inefficient preparation and confusion in career direction.
+Many candidates struggle to identify which skills are actually required in the job market. This leads to confusion and inefficient preparation.
 
 This project aims to analyze job listings and uncover patterns in skill demand and hiring trends.
 
@@ -25,15 +25,15 @@ This project aims to analyze job listings and uncover patterns in skill demand a
 ### 🔹 1. Data Understanding
 
 * Dataset contains job listings with title, company, location, and description
-* No structured skill column present
+* No structured skills column available
 
 ---
 
 ### 🔹 2. Data Cleaning
 
-* Renamed columns to lowercase
-* Removed duplicates
-* Cleaned text fields for consistency
+* Converted column names to lowercase
+* Removed duplicate records
+* Cleaned textual data
 
 ---
 
@@ -44,7 +44,7 @@ This project aims to analyze job listings and uncover patterns in skill demand a
 ![Top Roles](outputs/Screenshot 2026-04-14 210833.png)
 
 **Insight:**
-Few technical roles dominate hiring demand.
+Technical roles dominate the job market.
 
 ---
 
@@ -53,7 +53,7 @@ Few technical roles dominate hiring demand.
 ![Top Companies](outputs/Screenshot 2026-04-14 210917.png)
 
 **Insight:**
-Hiring is concentrated among a limited number of companies.
+Hiring is concentrated among a few companies.
 
 ---
 
@@ -62,7 +62,7 @@ Hiring is concentrated among a limited number of companies.
 ![Locations](outputs/Screenshot 2026-04-14 210957.png)
 
 **Insight:**
-Jobs are concentrated in specific geographic regions.
+Jobs are concentrated in specific geographic areas.
 
 ---
 
@@ -71,7 +71,7 @@ Jobs are concentrated in specific geographic regions.
 ![Skills](outputs/Screenshot 2026-04-14 211053.png)
 
 **Insight:**
-SQL and Python are the most frequently required skills.
+SQL and Python are the most demanded skills.
 
 ---
 
@@ -80,7 +80,7 @@ SQL and Python are the most frequently required skills.
 ![Industries](outputs/Screenshot 2026-04-14 211124.png)
 
 **Insight:**
-Majority of roles belong to technology-related industries.
+Most jobs belong to the technology sector.
 
 ---
 
@@ -89,7 +89,7 @@ Majority of roles belong to technology-related industries.
 ![Employment](outputs/Screenshot 2026-04-14 211219.png)
 
 **Insight:**
-Full-time roles dominate (~96% of listings).
+Full-time roles dominate (~96%).
 
 ---
 
@@ -97,23 +97,23 @@ Full-time roles dominate (~96% of listings).
 
 ## 🔥 Challenges & Learnings
 
-### ❌ Missing Salary Data
+### ❌ Missing Salary Column
 
-* Initially assumed salary would be available
-* Adjusted analysis to focus on skills and demand instead
+* Initially expected salary data
+* Adjusted approach to focus on skills and demand
 
 ---
 
-### ❌ No Structured Skills Column
+### ❌ No Structured Skills
 
-* Extracted skills from job descriptions using keyword matching
+* Extracted skills from description using keyword matching
 
 ---
 
 ### ❌ Data Leakage Issue
 
-* Used `skill_count` to define target and as a feature
-* This caused 100% accuracy
+* Used `skill_count` in both target and features
+* Resulted in 100% accuracy
 
 👉 Fixed by removing dependent features
 
@@ -121,8 +121,8 @@ Full-time roles dominate (~96% of listings).
 
 ### ❌ Execution Order Issue
 
-* Model was trained before defining the target
-* Fixed by restructuring the workflow
+* Model trained before target creation
+* Fixed pipeline order
 
 ---
 
@@ -130,18 +130,18 @@ Full-time roles dominate (~96% of listings).
 
 ## ⚙️ Feature Engineering
 
-* Extracted key skills from job descriptions:
+* Extracted skills:
 
   * Python
-  
+  * SQL
   * Excel
   * Machine Learning
   * Data Analysis
 
 * Created:
 
-  * Binary skill indicators (presence/absence of each skill)
-  * Derived features for modeling
+  * Binary skill indicators
+  * Derived features for ML
 
 ---
 
@@ -160,17 +160,18 @@ Full-time roles dominate (~96% of listings).
 
 ## 📈 Results
 
-* Achieved **~80% accuracy**
+* Accuracy: **~80%**
 * Model performs well without overfitting
 
 ---
 
 ## 💡 Key Insights
 
-* SQL and Python are the most demanded skills
+* SQL is the most demanded skill
+* Python is second most important
 * Skill combinations influence job demand
-* Most roles are full-time
-* Technology sector dominates hiring
+* Most jobs are full-time
+* Technology dominates hiring
 
 ---
 
@@ -198,7 +199,7 @@ job-market-intelligence-system/
 
 ## 🔚 Conclusion
 
-This project demonstrates how unstructured job data can be analyzed to extract meaningful insights and build predictive models.
+This project shows how unstructured job data can be transformed into meaningful insights and predictive models.
 
 It highlights the importance of:
 
@@ -212,4 +213,4 @@ It highlights the importance of:
 
 * Add salary-based analysis
 * Improve NLP techniques
-* Build a deployment interface
+* Build deployment app
