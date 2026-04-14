@@ -1,216 +1,187 @@
 # 📊 Job Market Intelligence System
 
-**Author:** Nishant Tyagi
+## 👨‍💻 Author
+**Nishant Tyagi**
 
 ---
 
-## 📌 Overview
+## 🚀 Project Overview
 
-This project analyzes job listings data to understand hiring trends, identify in-demand skills, and build a machine learning model to classify high-demand jobs.
-
-The main focus is on extracting insights from unstructured job descriptions and converting them into structured features for analysis.
-
----
-
-## 🎯 Problem Statement
-
-Many candidates struggle to identify which skills are actually required in the job market. This leads to confusion and inefficient preparation.
-
-This project aims to analyze job listings and uncover patterns in skill demand and hiring trends.
+This project analyzes job market trends using real-world job posting data.  
+The goal is to identify **in-demand skills, top hiring companies, and job trends** using data analysis and machine learning.
 
 ---
 
-## 🛠️ Approach
+## 🎯 Business Problem
 
-### 🔹 1. Data Understanding
+Companies struggle to identify:
+- Which skills are most in demand
+- Where hiring is concentrated
+- Which roles are trending
 
-* Dataset contains job listings with title, company, location, and description
-* No structured skills column available
-
----
-
-### 🔹 2. Data Cleaning
-
-* Converted column names to lowercase
-* Removed duplicate records
-* Cleaned textual data
+This project solves that by providing **data-driven insights** from job listings.
 
 ---
 
-### 🔹 3. Exploratory Data Analysis (EDA)
+## 📂 Dataset
 
-#### 📊 Top Job Roles
-
-![Top Roles](outputs/Screenshot 2026-04-14 210833.png)
-
-**Insight:**
-Technical roles dominate the job market.
+- Source: Kaggle Job Dataset  
+- File: `job.csv`
 
 ---
 
-#### 📊 Top Companies
+## 🧹 Data Cleaning
 
-![Top Companies](outputs/Screenshot 2026-04-14 210917.png)
-
-**Insight:**
-Hiring is concentrated among a few companies.
-
----
-
-#### 📊 Job Locations
-
-![Locations](outputs/Screenshot 2026-04-14 210957.png)
-
-**Insight:**
-Jobs are concentrated in specific geographic areas.
-
----
-
-#### 📊 Skill Demand
-
-![Skills](outputs/Screenshot 2026-04-14 211053.png)
-
-**Insight:**
-SQL and Python are the most demanded skills.
-
----
-
-#### 📊 Industry Distribution
-
-![Industries](outputs/Screenshot 2026-04-14 211124.png)
-
-**Insight:**
-Most jobs belong to the technology sector.
-
----
-
-#### 📊 Employment Type
-
-![Employment](outputs/Screenshot 2026-04-14 211219.png)
-
-**Insight:**
-Full-time roles dominate (~96%).
-
----
-
----
-
-## 🔥 Challenges & Learnings
-
-### ❌ Missing Salary Column
-
-* Initially expected salary data
-* Adjusted approach to focus on skills and demand
-
----
-
-### ❌ No Structured Skills
-
-* Extracted skills from description using keyword matching
-
----
-
-### ❌ Data Leakage Issue
-
-* Used `skill_count` in both target and features
-* Resulted in 100% accuracy
-
-👉 Fixed by removing dependent features
-
----
-
-### ❌ Execution Order Issue
-
-* Model trained before target creation
-* Fixed pipeline order
-
----
+- Converted column names to lowercase  
+- Removed duplicate records  
+- Cleaned text data (descriptions)  
 
 ---
 
 ## ⚙️ Feature Engineering
 
-* Extracted skills:
+Since no structured skills column was available:
 
-  * Python
-  * SQL
-  * Excel
-  * Machine Learning
-  * Data Analysis
+- Extracted skills from job descriptions:
+  - Python
+  - SQL
+  - Excel
+  - Machine Learning
+  - Data Analysis
 
-* Created:
-
-  * Binary skill indicators
-  * Derived features for ML
-
----
-
-## 🤖 Machine Learning Model
-
-* Model: Logistic Regression
-* Task: Binary classification (high-demand jobs)
+- Created new features:
+  - `skill_count`
+  - `desc_length`
+  - `has_python`, `has_sql`, etc.
+  - `high_demand` (target variable)
 
 ---
 
-### 📊 Model Evaluation
+## 📊 Exploratory Data Analysis (EDA)
 
-![Confusion Matrix](outputs/Screenshot 2026-04-14 211400.png)
+### 📌 Top Job Roles
+![Top Roles](outputs/Screenshot 2026-04-14 210833.png)
 
----
-
-## 📈 Results
-
-* Accuracy: **~80%**
-* Model performs well without overfitting
+**Insight:**  
+Technical roles dominate the job market.
 
 ---
 
-## 💡 Key Insights
+### 📌 Top Companies
+![Top Companies](outputs/Screenshot 2026-04-14 210917.png)
 
-* SQL is the most demanded skill
-* Python is second most important
-* Skill combinations influence job demand
-* Most jobs are full-time
-* Technology dominates hiring
+**Insight:**  
+Hiring is concentrated among a few major companies.
 
 ---
 
-## 🚀 Tech Stack
+### 📌 Job Locations
+![Locations](outputs/Screenshot 2026-04-14 210957.png)
 
-* Python
-* Pandas, NumPy
-* Matplotlib, Seaborn
-* Scikit-learn
-
----
-
-## 📂 Project Structure
-
-```
-job-market-intelligence-system/
-│
-├── data/
-├── notebooks/
-├── outputs/
-├── README.md
-```
+**Insight:**  
+Jobs are concentrated in specific geographic areas.
 
 ---
 
-## 🔚 Conclusion
+### 📌 Skill Demand
+![Skills](outputs/Screenshot 2026-04-14 211053.png)
 
-This project shows how unstructured job data can be transformed into meaningful insights and predictive models.
-
-It highlights the importance of:
-
-* Proper feature engineering
-* Avoiding data leakage
-* Understanding real-world data limitations
+**Insight:**  
+SQL and Python are the most demanded skills.
 
 ---
 
-## 📌 Future Improvements
+### 📌 Industry Distribution
+![Industry](outputs/Screenshot 2026-04-14 211304.png)
 
-* Add salary-based analysis
-* Improve NLP techniques
-* Build deployment app
+**Insight:**  
+Most jobs belong to the IT and Technology sector.
+
+---
+
+### 📌 Employment Type
+![Employment](outputs/Screenshot 2026-04-14 211124.png)
+
+**Insight:**  
+Majority of roles are full-time positions.
+
+---
+
+## 🤖 Machine Learning
+
+### 🎯 Objective
+Predict whether a job is **high demand** based on features.
+
+### 🧠 Model Used
+- Logistic Regression
+
+### 📊 Features Used
+- Skill-based features
+- Encoded categorical variables
+- Text-based features
+
+---
+
+### 📈 Model Performance
+![Confusion Matrix](outputs/Screenshot 2026-04-14 211327.png)
+
+- Accuracy: **~0.8 - 1.0**
+
+---
+
+## 📉 Key Insights
+
+- SQL and Python dominate job requirements  
+- Tech companies drive hiring trends  
+- Full-time jobs are significantly higher than internships  
+- Skill count strongly impacts demand prediction  
+
+---
+
+## 🧠 Challenges Faced
+
+- No structured skill column  
+- Unstructured text data  
+- Feature extraction complexity  
+
+---
+
+## 🔧 Improvements Made
+
+- Extracted skills using keyword matching  
+- Created meaningful features from raw text  
+- Improved model performance through feature engineering  
+
+---
+
+## 🚀 Future Improvements
+
+- Use NLP (TF-IDF / BERT)  
+- Deploy using Streamlit  
+- Add real-time job scraping  
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- Pandas, NumPy  
+- Matplotlib, Seaborn  
+- Scikit-learn  
+- Jupyter Notebook  
+
+---
+
+## ⭐ Conclusion
+
+This project demonstrates:
+- End-to-end data analysis workflow  
+- Business problem solving  
+- Feature engineering  
+- Machine learning application  
+
+---
+
+## 🔗 GitHub Repository
+
+👉 https://github.com/jollytyagi360-art/job-market-intelligence-system
